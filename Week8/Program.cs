@@ -77,3 +77,30 @@ public class CargoContainer<T> where T : DeliveryItem
         return total;
     }
 }
+class Program
+{
+    static void Main()
+    {
+        Letter letter1 = new Letter("L-001", 0.5);
+        Letter letter2 = new Letter("L-002", 0.2);
+
+        Parcel parcel1 = new Parcel("P-001", 5.0, "30x20x15");
+        Parcel parcel2 = new Parcel("P-002", 12.5, "50x40x30");
+
+        Console.WriteLine("test PrintInfo");
+        letter1.PrintInfo();
+        Console.WriteLine();
+        parcel1.PrintInfo();
+        Console.WriteLine();
+
+        CargoContainer<DeliveryItem> myCargo = new CargoContainer<DeliveryItem>();
+        
+        myCargo.AddItem(letter1);
+        myCargo.AddItem(letter2);
+        myCargo.AddItem(parcel1);
+        myCargo.AddItem(parcel2);
+
+        Console.WriteLine("Загальна вартість доставки ");
+        Console.WriteLine(myCargo.GetTotalCost() + " грн");
+    }
+}
